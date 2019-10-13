@@ -33,6 +33,9 @@ class Transfer
       p "Transaction rejected. Please check your account balance."
     end 
   end
-      
+  
+  # Can reverse a transfer between two accounts
+  def reverse_transfer
+  end
       
 end
