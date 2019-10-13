@@ -28,7 +28,7 @@ describe 'Transfer' do
       expect(transfer.amount).to eq(50)
     end
   end
-
+  
   describe '#valid?' do
     it "can check that both accounts are valid" do
       expect(avi.valid?).to eq (true)
@@ -41,7 +41,7 @@ describe 'Transfer' do
 
       expect(amanda).to receive(:valid?).and_return(true)
       expect(avi).to receive(:valid?).and_return(true)
-
+      
       transfer.valid?
     end
   end
@@ -51,7 +51,7 @@ describe 'Transfer' do
     let(:amanda) { BankAccount.new("Amanda") }
     let(:transfer) { Transfer.new(amanda, avi, 50) }
     let(:bad_transfer) { Transfer.new(amanda, avi, 4000) }
-
+    
     it "can execute a successful transaction between two accounts" do
       transfer.execute_transaction
       expect(amanda.balance).to eq(950)
