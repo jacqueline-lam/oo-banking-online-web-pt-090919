@@ -12,9 +12,10 @@ class Transfer
   
   def valid?
     # check that both accounts are valid
-    # calls on the sender and receiver's #valid? met
     @sender = BankAccount.all.find {|account| account == @sender}
     @receiver = BankAccount.all.find {|account| account == @receiver}
+    # calls on the sender and receiver's #valid? met 
+      # (account status open and +ve balance)
     return @sender.valid? && @receiver.valid?
   end
   
@@ -26,7 +27,7 @@ class Transfer
       @receiver.balance += @amount
       self.status = "complete"
     
-    #rejects a transfer if the sender doesn't have enough funds 
+    # rejects a transfer if the sender doesn't have enough funds 
     else  
       self.status = "rejected"
       p "Transaction rejected. Please check your account balance."
