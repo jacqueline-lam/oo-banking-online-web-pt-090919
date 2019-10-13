@@ -36,7 +36,11 @@ class Transfer
   
   # Can reverse a transfer between two accounts
   def reverse_transfer
-    
+    if self.status != "reversed"
+      @sender.balance += @amount
+      @receiver.blanace -= @amount
+      self.status = "reversed"
+    end
   end
       
       
